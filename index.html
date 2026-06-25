@@ -3,124 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>bule edan</title>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@type": "WebPage",
- "name": "Private Video Access",
- "description": "Exclusive limited access video content.",
- "url": "https://xlinkvideey.github.io/PrivateMomentsTV",
- "image": "https://xlinkvideey.github.io/PrivatePlayHub/doblex.jpg"
-}
-</script>
+<title>ote jalaludin</title>
 
 <style>
-*, :after, :before { box-sizing: border-box;}
-::-webkit-scrollbar { width: 2px;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
-@keyframes para {
-100% {
-background-position: -5000px 20%, -800px 95%, 500px 50%, 1000px 100%, 400px 0;
-}
-}
-
-:root {
---primary-color: gold;
---bg-color: black;
---text-color: white;
---button-text: black;
+body{
+  font-family:Arial,sans-serif;
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:15px;
 }
 
-body {
-margin: 0;
-font-family: Arial, sans-serif;
-color: var(--text-color);
-text-align: center;
-background-color: #000;
-background-image: 
-url("https://xlinkvideey.github.io/PrivatePlayHub/xlinkz.jpg");
-background-repeat: repeat-x;
-background-size: cover;
-animation: 50s para infinite linear;
-min-height: 100vh;
-}
-
-.container {
-width: 100%;
-max-width: 520px;
-margin: auto;
-padding: clamp(15px,4vw,30px);
-}
-
-.profile-pic {
-width: clamp(90px, 25vw, 130px);
-height: clamp(90px, 25vw, 130px);
-border-radius: 50%;
-object-fit: cover;
-border: 3px solid var(--primary-color);
-margin-bottom: 15px;
-}
-
-h1 {
-font-size: clamp(18px, 4.5vw, 26px);
-margin-bottom: 10px;
-}
-
-.link-btn {
-display: block;
-width: 100%;
-background: var(--primary-color);
-color: var(--button-text);
-padding: clamp(12px,3.5vw,16px);
-margin: 10px 0;
-border-radius: 10px;
-text-decoration: none;
-font-size: clamp(14px,3.5vw,18px);
-font-weight: bold;
-}
-
-.link-btn:hover {
-background: #c2185b;
-}
-
-.sampleMarquee {
-color: white;
-background-color: #000;
-padding: 12px;
-font-weight: bold;
-font-style: italic;
-font-size: clamp(12px,3vw,16px);
-}
-
-/* extra mobile spacing */
-@media (max-width:480px){
 .container{
-padding:20px 15px;
+  max-width:500px;
+  margin:auto;
+  padding:20px;
 }
+
+img{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  border:2px solid gold;
+  object-fit:cover;
+  margin-bottom:15px;
+}
+
+h1{font-size:26px;margin:15px 0;}
+
+p{font-size:14px;opacity:.85;line-height:1.5;}
+
+.loading{
+  width:100%;
+  height:6px;
+  background:#222;
+  border-radius:5px;
+  overflow:hidden;
+  margin:15px 0;
+  display:none;
+}
+
+.loading-bar{
+  height:100%;
+  width:0%;
+  background:gold;
+  transition:width .25s linear;
+}
+
+.btn{
+  display:block;
+  width:100%;
+  padding:15px;
+  margin:10px 0;
+  background:gold;
+  color:#000;
+  font-weight:bold;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+.video-box{
+  background-image: url("https://xlinkvideey.github.io/bkz67/hyu.png");
+  background-position: center;
+  background-size: cover;
+  border-radius:12px;
+  margin:15px 0;
+  cursor:pointer;
+  position:relative;
+  height: 100vh;
+  width: 100%;
+  overflow:hidden;
+}
+
+.video-box video{
+  position:absolute;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:none;
+  
+}
+
+.label{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.45);
+}
+
+.label svg{
+  width:90px;
+  height:90px;
+  filter:drop-shadow(0 0 15px rgba(255,215,0,.5));
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.08);}
+  100%{transform:scale(1);}
+}
+
+#overlayCTA{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.8);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+}
+
+#overlayCTA.show{
+  opacity:1;
+  pointer-events:auto;
+}
+
+#continueBtn{
+  background:gold;
+  color:#000;
+  padding:14px 20px;
+  border-radius:8px;
+  font-weight:bold;
+  opacity:0;
+  transform:scale(.8);
+  transition:.3s;
+}
+
+#continueBtn.show{
+  opacity:1;
+  transform:scale(1);
+}
+
+.tooltip{position:relative;}
+.tooltip .tooltiptext{
+  visibility:hidden;
+  opacity:0;
+  width:80px;
+  color:#444;
+  text-align:center;
+  padding:4px;
+  position:absolute;
+  bottom:22px;
+  border:1px solid #444;
+  transition:.3s;
+}
+.tooltip:hover .tooltiptext{
+  visibility:visible;
+  opacity:.8;
+}
+#statusLabel {
+  font-weight: bold;
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-<img src="https://xlinkvideey.github.io/PrivatePlayHub/xlinkz.jpg" class="profile-pic">
+<img src="https://icungsilet.github.io/kdsbkw/hyu.png">
 
-<h1>⬇️ 𝗩𝗜𝗗𝗘𝗢 𝗟𝗜𝗡𝗞 𝗕𝗘𝗟𝗢𝗪 ⬇️</h1>
+<div class="tooltip">
+  <div style="display:inline-flex;align-items:center;gap:5px;">
+    <span id="statusLabel">viralscreen</span>
 
-<a href="https://t.me/viddonald" class="link-btn" target="_blank">𝗣𝗟𝗔𝗬 𝗩𝗜𝗗𝗘𝗢</a>
+    <svg fill="none" height="16" viewBox="0 0 16 16" width="16">
+      <path clip-rule="evenodd"
+        d="M8 0L9.99182 1.3121L12.3696 1.29622L13.3431 3.48797L15.3519 4.77336L14.9979 7.14888L16 9.32743L14.431 11.1325L14.1082 13.5126L11.8223 14.1741L10.277 16L8 15.308L5.72296 16L4.17772 14.1741L1.89183 13.5126L1.569 11.1325L0 9.32743L1.00206 7.14888L0.648112 4.77336L2.65693 3.48797L3.6304 1.29622L6.00818 1.3121L8 0Z"
+        fill="#0095F6" fill-rule="evenodd"></path>
 
-<marquee class="sampleMarquee">
-If the video doesn't open, click on the other server link.
-</marquee>
+      <path clip-rule="evenodd"
+        d="M10.4036 5.20536L7.18853 8.61884L6.12875 7.49364C5.8814 7.23102 5.46798 7.21864 5.20536 7.466C4.94274 7.71335 4.93036 8.12677 5.17771 8.38939L6.71301 10.0195C6.9709 10.2933 7.40616 10.2933 7.66405 10.0195L11.3546 6.10111C11.6019 5.83848 11.5896 5.42507 11.3269 5.17771C11.0643 4.93036 10.6509 4.94274 10.4036 5.20536Z"
+        fill="white" fill-rule="evenodd"></path>
+    </svg>
+  </div>
 </div>
-<script async="async" data-cfasync="false" src="https://illuminationacceptedkeynote.com/b0b915e4106768d04f15b686c50c4b7e/invoke.js"></script>
-<div id="container-b0b915e4106768d04f15b686c50c4b7e"></div>
-<!-- Histats.com  START  (aync)-->
+<h1>⬇️ 𝗩𝗜𝗗𝗘𝗢 𝗟𝗜𝗡𝗞 𝗕𝗘𝗟𝗢𝗪 ⬇️</h1>
+<script>
+  atOptions = {
+    'key' : 'ee3994bb04f10fc69f6e67026fc3c037',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/ee3994bb04f10fc69f6e67026fc3c037/invoke.js"></script>
+<p id="statusText">
+Video is loading... please click below to continue
+</p>
+
+<div class="loading" id="loadingBox">
+  <div class="loading-bar" id="loadingBar"></div>
+</div>
+
+<div class="video-box" onclick="playVideo(this)">
+  <div class="label">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="45" fill="gold"/>
+      <polygon points="42,32 72,50 42,68" fill="#000"/>
+    </svg>
+  </div>
+
+  <video id="player" controls playsinline preload="metadata"></video>
+
+  <div id="overlayCTA">
+    <button id="continueBtn" onclick="handleClick('video')">
+      ▶ Continue
+    </button>
+  </div>
+</div>
+
+<button class="btn" onclick="handleClick('movie')">𝗣𝗟𝗔𝗬 𝗩𝗜𝗗𝗘𝗢</button>
+<button class="btn" onclick="handleClick('chat')">𝗦𝗘𝗥𝗩𝗘𝗥 𝟏</button>
+<button class="btn" onclick="handleClick('app')">𝗦𝗘𝗥𝗩𝗘𝗥 𝟐</button>
+
+<p style="font-size:12px;opacity:.7;">
+✔ Fast streaming • ✔ No signup • ✔ Free access
+</p>
+
+</div>
+  
+<footer style="margin-top:30px;font-size:15px;">
+<a href="https://megadon8787-sudo.github.io/about/">About</a> |
+<a href="https://megadon8787-sudo.github.io/privacy/">Privacy</a> |
+<a href="https://megadon8787-sudo.github.io/terms/">Terms</a> |
+<a href="https://megadon8787-sudo.github.io/contact/">Contact</a>
+</footer><br>
+<script>
+  atOptions = {
+    'key' : '668912fc9dc8ba6ba14a7fac182d4a20',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/668912fc9dc8ba6ba14a7fac182d4a20/invoke.js"></script>
+<br>
+<script async="async" data-cfasync="false" src="https://pl27193626.effectivecpmnetwork.com/362992b1130cd9d10445afad13488b41/invoke.js"></script>
+<div id="container-362992b1130cd9d10445afad13488b41"></div>
+<br>
+<script src="https://pl27575085.effectivecpmnetwork.com/c3/94/dd/c394dd8f29d90147a9b0d87502e5a0ad.js"></script>
+<script src="https://pl27575074.effectivecpmnetwork.com/86/b0/31/86b031edbed52dfaee0ffbd0f3170f9d.js"></script>
+<script>
+const ad1=atob("aHR0cHM6Ly93d3cuZWZmZWN0aXZlY3BtbmV0d29yay5jb20vdXEzNWc5Y2Z3cT9rZXk9NGMyMGZiNmZmMDUzYzI4OGYzNjhiNDBiNzM2ODA3MDI");
+const ad2=atob("aHR0cHM6Ly93d3cuZWZmZWN0aXZlY3BtbmV0d29yay5jb20vdHdnNWlyY244ND9rZXk9OGM1ZmNmMWZlNTQ2M2Q2NGM0MDk2MWVlNDkwODE5MWM");
+const ad3=atob("aHR0cHM6Ly93d3cuZWZmZWN0aXZlY3BtbmV0d29yay5jb20vYnB5aDJuM3UxP2tleT0zNjVjZDlhNTE0Nzc5OGE5ZjY2NjAxMWQ2Y2JjZDhmMA");
+const ad4=atob("aHR0cHM6Ly93d3cuZWZmZWN0aXZlY3BtbmV0d29yay5jb20vcjFyZTk3ZXF2P2tleT1kOGVjM2Q3MzQ4NmM2ZjRhNDhhNGFkNzc2ZTcxNWI2ZQ");
+
+function getLink(type){
+  return{video:ad1,movie:ad2,chat:ad3,app:ad4}[type]||ad1;
+}
+
+let isProcessing=false;
+
+function handleClick(type){
+  if(isProcessing)return;
+  isProcessing=true;
+  startFakeLoading(getLink(type));
+}
+
+function startFakeLoading(link){
+  const bar=document.getElementById("loadingBar");
+  const box=document.getElementById("loadingBox");
+  const text=document.getElementById("statusText");
+
+  box.style.display="block";
+  text.innerText="Processing video...";
+
+  let progress=0;
+
+  const interval=setInterval(()=>{
+    progress+=8;
+
+    if(progress>=100){
+      progress=100;
+      clearInterval(interval);
+
+      text.innerText="Opening...";
+
+      setTimeout(()=>{
+        window.open(link,"_blank","noopener,noreferrer");
+        box.style.display="none";
+        bar.style.width="0%";
+        isProcessing=false;
+      },500);
+    }
+
+    bar.style.width=progress+"%";
+  },250);
+}
+
+const params=new URLSearchParams(window.location.search);
+const id=params.get("id");
+
+function playVideo(box){
+  if(!id||id.trim()===""){
+    alert("Video not found");
+    return;
+  }
+
+  const video=document.getElementById("player");
+  video.src="https://cdn2.videy.co/"+id+".mp4";
+  video.style.display="block";
+
+  box.querySelector(".label").style.display="none";
+
+  video.play().catch(()=>{});
+  setTimeout(showContinueBtn,8000);
+
+  box.onclick=null;
+}
+
+function showContinueBtn(){
+  const overlay=document.getElementById("overlayCTA");
+  const btn=document.getElementById("continueBtn");
+  const video=document.getElementById("player");
+
+  video.pause();
+  overlay.classList.add("show");
+
+  setTimeout(()=>btn.classList.add("show"),50);
+}
+</script>
 <script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4716773,4,9,110,60,00010000']);
+_Hasync.push(['Histats.start', '1,5026796,4,9,110,60,00010000']);
 _Hasync.push(['Histats.fasi', '1']);
 _Hasync.push(['Histats.track_hits', '']);
 (function() {
@@ -128,8 +344,6 @@ var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async
 hs.src = ('//s10.histats.com/js15_as.js');
 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
 })();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4716773&101" alt="" border="0"></a></noscript>
-<!-- Histats.com  END  -->
-
+<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5026796&101" alt="" border="0"></a></noscript>
 </body>
 </html>
